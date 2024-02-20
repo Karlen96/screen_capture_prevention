@@ -1,6 +1,5 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:screen_capture_prevention/providers/screen_actions_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,6 +32,11 @@ class _MyHomePageState extends State<MyHomePage> {
   bool _inPrevented = false;
 
   void _toggle() {
+    if (_inPrevented) {
+      ScreenActionsProvider.disableSecure();
+    } else {
+      ScreenActionsProvider.enableSecure();
+    }
     setState(() {
       _inPrevented = !_inPrevented;
     });
